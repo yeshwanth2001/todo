@@ -1,0 +1,53 @@
+require "application_system_test_case"
+
+class TodoItemsTest < ApplicationSystemTestCase
+  setup do
+    @todo_item = todo_items(:one)
+  end
+
+  test "visiting the index" do
+    visit todo_items_url
+    assert_selector "h1", text: "Todo Items"
+  end
+
+  test "creating a Todo item" do
+    visit todo_items_url
+    click_on "New Todo Item"
+
+    fill_in "Create", with: @todo_item.create
+    fill_in "Destroy", with: @todo_item.destroy
+    fill_in "Index", with: @todo_item.index
+    fill_in "New", with: @todo_item.new
+    fill_in "Show", with: @todo_item.show
+    fill_in "Update", with: @todo_item.update
+    click_on "Create Todo item"
+
+    assert_text "Todo item was successfully created"
+    click_on "Back"
+  end
+
+  test "updating a Todo item" do
+    visit todo_items_url
+    click_on "Edit", match: :first
+
+    fill_in "Create", with: @todo_item.create
+    fill_in "Destroy", with: @todo_item.destroy
+    fill_in "Index", with: @todo_item.index
+    fill_in "New", with: @todo_item.new
+    fill_in "Show", with: @todo_item.show
+    fill_in "Update", with: @todo_item.update
+    click_on "Update Todo item"
+
+    assert_text "Todo item was successfully updated"
+    click_on "Back"
+  end
+
+  test "destroying a Todo item" do
+    visit todo_items_url
+    page.accept_confirm do
+      click_on "Destroy", match: :first
+    end
+
+    assert_text "Todo item was successfully destroyed"
+  end
+end
