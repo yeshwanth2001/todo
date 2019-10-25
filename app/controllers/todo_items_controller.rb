@@ -9,9 +9,6 @@ class TodoItemsController < ApplicationController
     @todo_items = TodoItem.all.order("completed") if @status.blank?
     @todo_items = TodoItem.where(completed: @status ).order("updated_at DESC") unless (@status=="all" || @status.blank? ) 
 
-
-    puts "#{@status}"
-
   end
 
   # GET /todo_items/1
